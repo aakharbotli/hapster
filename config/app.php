@@ -5,6 +5,14 @@ use Illuminate\Support\ServiceProvider;
 
 return [
 
+        /*
+    |-------------------------------------------
+    | Current API Version
+    |-------------------------------------------
+    */
+
+    'api_latest'  => '1',
+
     /*
     |--------------------------------------------------------------------------
     | Application Name
@@ -163,6 +171,7 @@ return [
         /*
          * Application Service Providers...
          */
+        Spatie\Permission\PermissionServiceProvider::class,
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
