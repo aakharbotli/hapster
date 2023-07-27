@@ -158,4 +158,23 @@ return [
 
         'store' => 'default',
     ],
+    'admin'=>[
+        'add users',
+        'update users',
+        'delete users',
+
+        'add departments',
+        'update departments',
+        'delete departments',
+
+    ],
+    'trainer'=>[
+        'access skills',
+        'start trainnings',
+    ],
+    'capturer'=>[
+        'add skills',
+        'update skills',
+        'delete skills',
+    ],
 ];
