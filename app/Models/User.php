@@ -28,6 +28,8 @@ class User extends Authenticatable
         'email',
         'company_id',
         'password',
+        'attempts_count',
+        'retry_attempt_time',
     ];
 
     /**
@@ -49,4 +51,17 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+
+    public function company()  {
+        return $this->belongsTo(Company::class);
+    }
+
+    public function sites(){
+        return $this->belongsToMany(Site::class);
+    }
+    
+    public function departments(){
+        return $this->belongsToMany(Department::class);
+    }
 }
