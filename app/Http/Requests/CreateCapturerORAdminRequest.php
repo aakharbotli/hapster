@@ -4,14 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class CreateUserRequest extends FormRequest
+class CreateCapturerORAdminRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -25,10 +25,12 @@ class CreateUserRequest extends FormRequest
         'first_name'=>'required',
         'last_name'=>'required',
         'username'=>'required|users:unique,username',
-        'phone_number'=>'required',
+        'phone_number'=>'required|regex:/^([0-9\s\-\+\(\)]*)$/|min:8',
+        'roles'=>'required|array',
         'avatar'=>'image',
         'email'=>'required|email|max:50',
-        'password'=>['regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*(_|[^\w])).+$/','min:16'],
+        'is_reset'=>'required|boolean',
+        'password'=>['regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*(_|[^\w])).+$/','min:16','confirmed'],
         ];
     }
 }
