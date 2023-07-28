@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use GuzzleHttp\Psr7\Request;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -30,6 +32,7 @@ class User extends Authenticatable
         'password',
         'attempts_count',
         'retry_attempt_time',
+        'is_reset',
     ];
 
     /**
@@ -50,6 +53,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
+        'is_reset' => 'boolean',
     ];
 
 
@@ -60,8 +64,12 @@ class User extends Authenticatable
     public function sites(){
         return $this->belongsToMany(Site::class);
     }
-    
+
     public function departments(){
         return $this->belongsToMany(Department::class);
+    }
+
+    public function requests(){
+       return $this->hasMany(Request::class); 
     }
 }

@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('users', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('company_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('site_id')->constrained()->cascadeOnDelete();
             $table->string('first_name');
             $table->string('last_name');
             $table->string('username')->unique();
@@ -25,6 +25,7 @@ return new class extends Migration
             $table->string('password');
             $table->integer('attempts_count')->nullable();
             $table->time('retry_attempt_time')->nullable();
+            $table->boolean('is_reset');
             $table->rememberToken();
             $table->timestamps();
         });

@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('site_user', function (Blueprint $table) {
+        Schema::create('department_skill', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id');
-            $table->foreignId('site_id');
-
+            $table->foreignId('department_id');
+            $table->foreignId('skill_id');
+            $table->timestamps();
         });
     }
 
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('site_user');
+        Schema::dropIfExists('department_skill');
     }
 };
